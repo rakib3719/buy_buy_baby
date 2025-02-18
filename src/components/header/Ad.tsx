@@ -21,7 +21,7 @@ const Ad = () => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % ads.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [ads.length]);
 
   return (
     <div className="relative bg-gray-400 py-4 flex justify-center text-center m-auto gap-16 overflow-hidden">

@@ -1,9 +1,9 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import image from '../../../asset/banner.jpg';
-import image2 from '../../../asset/banner.jpg';  // Add your 2nd image
-import image3 from '../../../asset/banner.jpg';  // Add your 3rd image
+import image from '@/asset/banner.jpg';
+import image2 from '@/asset/banner2.jpg';  // Add your 2nd image
+import image3 from '@/asset/banner3.jpg';  // Add your 3rd image
 import { motion } from 'framer-motion';
 import { bgColors } from '@/app/utils/color';
 
@@ -44,7 +44,7 @@ const Banner = () => {
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   return (
     <div className="relative w-full">
