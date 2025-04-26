@@ -12,6 +12,8 @@ import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 
 import SidebarWidget from "./SidebarWidget";
+import { FaUserDoctor } from "react-icons/fa6";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 // import { BoxCubeIcon, CalenderIcon, ChevronDownIcon, GridIcon, HorizontaLDots, ListIcon, PageIcon, PieChartIcon, PlugInIcon, TableIcon, UserCircleIcon } from "@/icons/index";
 
@@ -19,7 +21,7 @@ type NavItem = {
   name: string;
   icon: React.ReactNode;
   path?: string;
-  subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
+  subItems?: { name: string;icon?:React.ReactNode, path: string; pro?: boolean; new?: boolean }[];
 };
 
 const navItems: NavItem[] = [
@@ -40,9 +42,9 @@ const navItems: NavItem[] = [
   },
 
   {
-    name: "Forms",
-    icon:<FaFortAwesome/>,
-    subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
+    name: "Doctor Manage",
+    icon:<FaUserDoctor />,
+    subItems: [{ name: "Add Doctor", path: "/dashboard/admin/add_doctor", pro: false, icon:<IoIosAddCircleOutline/> }],
   },
   {
     name: "Tables",
@@ -182,7 +184,9 @@ const AppSidebar: React.FC = () => {
             >
               <ul className="mt-2 space-y-1 ml-9">
                 {nav.subItems.map((subItem) => (
+
                   <li key={subItem.name}>
+
                     <Link
                       href={subItem.path}
                       className={`menu-dropdown-item ${
@@ -191,6 +195,8 @@ const AppSidebar: React.FC = () => {
                           : "menu-dropdown-item-inactive"
                       }`}
                     >
+                     <div className="flex items-center gap-2">
+                     <span>{subItem.icon}</span>
                       {subItem.name}
                       <span className="flex items-center gap-1 ml-auto">
                         {subItem.new && (
@@ -216,6 +222,7 @@ const AppSidebar: React.FC = () => {
                           </span>
                         )}
                       </span>
+                     </div>
                     </Link>
                   </li>
                 ))}
